@@ -1,0 +1,6 @@
+http://85.202.163.43 {
+	root * /home/mt/public
+	encode gzip
+	php_fastcgi unix//run/php/php8.3-fpm.sock
+	file_server
+}

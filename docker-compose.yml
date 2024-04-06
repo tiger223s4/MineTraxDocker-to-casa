@@ -1,0 +1,15 @@
+services:
+  minetrax:
+    image: justman10000/minetrax:latest
+    ports:
+      - 4456:80
+      - 3310:3306
+    environment:
+      - APP_NAME=CHANGE_ME
+      - APP_LOCALE=CHANGE_ME
+      - APP_URL=CHANGE_ME
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_DATABASE=CHANGE_ME
+      - DB_USERNAME=CHANGE_ME
+      - DB_PASSWORD=CHANGE_ME

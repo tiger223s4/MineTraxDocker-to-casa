@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while (( $# )); do
+    case $1 in
+        -nc)
+            cache="--no-cache"
+            shift 1
+        ;;
+    esac
+done
+
+docker build --tag YOUR_TAG . $cache 2>&1 | tee log.txt

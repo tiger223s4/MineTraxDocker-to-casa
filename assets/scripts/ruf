@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -r .* *.md *.txt Docker* docker* *lock* AUTHORS CODEOWNERS LICENSE NOTICE

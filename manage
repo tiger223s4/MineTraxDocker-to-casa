@@ -1,0 +1,63 @@
+#!/bin/bash
+
+start () {
+    if [[ $1 != "-od" ]]; then
+        docker compose up -d
+        docker compose logs -f
+    fi
+}
+
+kill () {
+    docker compose kill
+}
+
+down() {
+    docker compose down --volumes
+}
+
+while (( $# )); do
+    case $1 in
+        -ex|--exec)
+            docker exec -ti --workdir /home/mt minetraxdocker-minetrax-1 /bin/bash
+            shift 2
+        ;;
+
+        -c|--comand)
+            docker exec --workdir /home/mt minetraxdocker-minetrax-1 php artisan $2
+            shift 2
+        ;;
+
+        -rp|--reset-password)
+            docker exec --workdir /home/mt minetraxdocker-minetrax-1 php artisan auth:password:reset superadmin
+            shift 1
+        ;;
+
+        -s|--start)
+            start
+
+            shift 1
+        ;;
+
+        -r|--restart)
+            kill
+            down
+
+            start
+
+            shift 1
+        ;;
+
+        -k|--kill)
+            kill
+
+            shift 1
+        ;;
+
+        -d|--destroy)
+            kill
+            down
+
+            shift 1
+        ;;
+    esac
+done

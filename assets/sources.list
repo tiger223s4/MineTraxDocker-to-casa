@@ -1,0 +1,16 @@
+deb http://ftp.de.debian.org/debian/ trixie main contrib non-free
+deb-src http://ftp.de.debian.org/debian/ trixie main contrib non-free
+
+deb http://ftp.de.debian.org/debian/ trixie-updates main contrib non-free
+deb-src http://ftp.de.debian.org/debian/ trixie-updates main contrib non-free
+
+deb http://ftp2.de.debian.org/debian/ trixie main contrib non-free
+deb-src http://ftp2.de.debian.org/debian/ trixie main contrib non-free
+
+deb http://ftp2.de.debian.org/debian/ trixie-updates main contrib non-free
+deb-src http://ftp2.de.debian.org/debian/ trixie-updates main contrib non-free
+
+deb http://security.debian.org/ trixie-security main contrib non-free
+deb-src http://security.debian.org/ trixie-security main contrib non-free
+
+deb https://packages.sury.org/php/ bookworm main

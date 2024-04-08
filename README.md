@@ -26,6 +26,8 @@ To manage the MineTrax container, you can use following the *manage* script:
 <br>
 `bash manage -e` => Join console (to run commands in a running MineTrax container)
 <br>
+`bash manage -c` => Run a artisan command inside the container
+<br>
 `bash manage -s` => Create and start a MineTrax container
 <br>
 `bash manage -r` => Reset a MineTrax container (kill and remove the existing and start a new fresh container)

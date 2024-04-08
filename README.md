@@ -21,6 +21,15 @@ MineTrax for your Docker instances!
 - REDIS_PASSWORD
 - REDIS_PORT
 
+# Installation
+Run in an empty directory:
+
+```bash
+git init
+git pull https://github.com/Justman100/MineTraxDocker
+bash manage -s
+```
+
 # Usage
 To manage the MineTrax container, you can use following the *manage* script:
 <br>

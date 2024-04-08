@@ -67,6 +67,15 @@ php artisan auth:password:reset superadmin
 
 service minetrax-worker start
 
+cat << EOF > /home/Caddyfile
+http://$(curl 'https://api.ipify.org') {
+	root * /home/mt/public
+	encode gzip
+	php_fastcgi unix//run/php/php8.3-fpm.sock
+	file_server
+}
+EOF
+
 caddy start --config /home/Caddyfile
 
 tail -f /dev/null

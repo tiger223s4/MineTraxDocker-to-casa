@@ -25,8 +25,6 @@ RUN chmod +x /usr/bin/redis-server
 COPY --from=docker.io/library/caddy:latest /usr/bin/caddy /usr/bin/caddy
 RUN chmod +x /usr/bin/caddy
 
-COPY assets/Caddyfile /home/Caddyfile
-
 COPY assets/minetrax-worker /etc/init.d/minetrax-worker
 RUN chmod +x /etc/init.d/minetrax-worker
 

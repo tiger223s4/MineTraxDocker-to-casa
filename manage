@@ -15,20 +15,22 @@ down() {
     docker compose down --volumes
 }
 
+containerName=$(docker ps | grep -iP '4456' | grep -ioP '[A-Za-z]+-minetrax-\d')
+
 while (( $# )); do
     case $1 in
         -e|--exec)
-            docker exec -ti --workdir /home/mt minetraxdocker-minetrax-1 /bin/bash
+            docker exec -ti --workdir /home/mt $containerName /bin/bash
             shift 2
         ;;
 
         -c|--command)
-            docker exec --workdir /home/mt minetraxdocker-minetrax-1 php artisan $2
+            docker exec --workdir /home/mt $containerName php artisan $2
             shift 2
         ;;
 
         -rp|--reset-password)
-            docker exec --workdir /home/mt minetraxdocker-minetrax-1 php artisan auth:password:reset superadmin
+            docker exec --workdir /home/mt $containerName php artisan auth:password:reset superadmin
             shift 1
         ;;
 

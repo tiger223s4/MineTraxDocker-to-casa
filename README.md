@@ -37,13 +37,17 @@ To manage the MineTrax container, you can use following the *manage* script:
 <br>
 `bash manage -c` => Run a artisan command inside the container
 <br>
-`bash manage -s` => Create and start a MineTrax container
+`bash manage -rp` => Reset the password of the MineTrax super admin
 <br>
-`bash manage -r` => Reset a MineTrax container (kill and remove the existing and start a new fresh container)
+`bash manage -s` => Create and start all container
 <br>
-`bash manage -k` => Kill a MineTrax container
+`bash manage -r` => Reset all container (kill and remove the existing and start a new fresh container)
 <br>
-`bash manage -d` => Kill and remove a MineTrax container
+`bash manage -k` => Kill all container
+<br>
+`bash manage -d` => Kill and remove all container - without volumes
+<br>
+`bash manage -da` => Kill and remove all container - with volumes
 <br>
 
 Note: To use multiple MineTrax containers, change `minetrax` under `services` in the `docker-compose.yml` to a different name (e.g. minetrax-example)

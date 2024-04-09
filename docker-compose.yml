@@ -1,15 +1,50 @@
 services:
   minetrax:
     image: justman10000/minetrax:latest
+    container_name: minetrax
     ports:
       - 4456:80
-      - 3310:3306
     environment:
       - APP_NAME=CHANGE_ME
       - APP_LOCALE=CHANGE_ME
       - APP_URL=CHANGE_ME
-      - DB_HOST=127.0.0.1
+      - DB_HOST=database
       - DB_PORT=3306
-      - DB_DATABASE=CHANGE_ME
-      - DB_USERNAME=CHANGE_ME
+      - DB_DATABASE=minetrax
+      - DB_USERNAME=root
       - DB_PASSWORD=CHANGE_ME
+    volumes:
+      - minetrax:/home/mt
+    networks:
+      - minetrax
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    image: mariadb:11.4.1-rc
+    container_name: mariadb
+    ports:
+      - 3310:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=CHANGE_ME
+      - MARIADB_DATABASE=minetrax
+    networks:
+      - minetrax
+    healthcheck:
+      test: [
+          "CMD",
+          "healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized"
+      ]
+      interval: 1s
+      timeout: 1s
+      retries: 1
+      start_period: 15s
+
+networks:
+  minetrax:
+
+volumes:
+  minetrax:
